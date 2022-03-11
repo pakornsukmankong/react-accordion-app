@@ -1,24 +1,27 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import FooterComponent from './components/FooterComponent';
+import SingleAccordion from './components/SingleAccordion';
+import data from './data/data'
 
 function App() {
+  // eslint-disable-next-line no-unused-vars
+  const [content,setContent] = useState(data)
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <main>
+      <div className='container'>
+        <h1 className='title'>Accordion App</h1>
+        <section>
+          {content.map((e)=> {
+            return <SingleAccordion key={e.id} {...e}/>
+          })}
+        </section>
+      </div>
+    </main>
+    <FooterComponent/>
+    </>
   );
 }
 
